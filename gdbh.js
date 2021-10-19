@@ -5,15 +5,14 @@
 下载链接：http://sd.bhrax.com/inviter/uappjb?userid=5803127
 ------
 注册填写邀请码：1H9N65
-
 每天0.7元 ，5元提现秒到支付宝
+
+获取ck：点击我的  即可获取ck 
 
 js：
 https://raw.githubusercontent.com/wx13069/JD/master/gdbh.js
-
 重写
 https://proxy.guodongbaohe.com/income/mymoney
-
 主机名
 proxy.guodongbaohe.com
 
@@ -115,12 +114,17 @@ function gdbhqd(timeout = 0) {
         
         times = Math.round(new Date().getTime()/1000).toString();
 
+        pp = gdbhurl.split('platform=')[1].split('&')[0]
+
         id = gdbhurl.split('member_id=')[1].split('&')[0]
         
         sign = MD5_Encrypt(`member_id=${id}&platform=android&timestamp=${times}&${mm}`)
+        
+        //url = gdbhurl.replace(/timestamp=\d+&signature=\w+/g,`timestamp=${times}&signature=${sign}`) 
+        
 
         let url = {
-            url: `https://proxy.guodongbaohe.com/coins/checkin?member_id=${id}&platform=android&timestamp=${times}&signature=${sign}&`,
+            url: `https://proxy.guodongbaohe.com/coins/checkin?member_id=${id}&platform=${pp}&timestamp=${times}&signature=${sign}&`,
             headers: JSON.parse(gdbhhd),
            
         }
@@ -158,12 +162,15 @@ function gdbhsp(timeout = 0) {
         
         times = Math.round(new Date().getTime()/1000).toString();
 
+        pp = gdbhurl.split('platform=')[1].split('&')[0]
+
         id = gdbhurl.split('member_id=')[1].split('&')[0]
+        
         
         sign = MD5_Encrypt(`member_id=${id}&platform=android&timestamp=${times}&${mm}`)
 
         let url = {
-            url: `https://proxy.guodongbaohe.com/coins/award?member_id=${id}&platform=android&timestamp=${times}&signature=${sign}&`,
+            url: `https://proxy.guodongbaohe.com/coins/award?member_id=${id}&platform=${pp}&timestamp=${times}&signature=${sign}&`,
             headers: JSON.parse(gdbhhd),
            
         }
