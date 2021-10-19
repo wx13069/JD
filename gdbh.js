@@ -6,6 +6,8 @@
 ------
 注册填写邀请码：1H9N65
 
+每天0.7元 ，5元提现秒到支付宝
+
 js：
 https://raw.githubusercontent.com/wx13069/JD/master/gdbh.js
 
