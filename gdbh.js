@@ -21,7 +21,6 @@ proxy.guodongbaohe.com
 
 
 
-
 const $ = new Env('果冻宝盒');
 let status;
 status = (status = ($.getval("gdbhstatus") || "1")) > 1 ? `${status}` : ""; // 账号扩展字符
@@ -118,7 +117,7 @@ function gdbhqd(timeout = 0) {
 
         id = gdbhurl.split('member_id=')[1].split('&')[0]
         
-        sign = MD5_Encrypt(`member_id=${id}&platform=android&timestamp=${times}&${mm}`)
+        sign = MD5_Encrypt(`member_id=${id}&platform=${pp}&timestamp=${times}&${mm}`)
         
         //url = gdbhurl.replace(/timestamp=\d+&signature=\w+/g,`timestamp=${times}&signature=${sign}`) 
         
@@ -167,7 +166,7 @@ function gdbhsp(timeout = 0) {
         id = gdbhurl.split('member_id=')[1].split('&')[0]
         
         
-        sign = MD5_Encrypt(`member_id=${id}&platform=android&timestamp=${times}&${mm}`)
+        sign = MD5_Encrypt(`member_id=${id}&platform=${pp}&timestamp=${times}&${mm}`)
 
         let url = {
             url: `https://proxy.guodongbaohe.com/coins/award?member_id=${id}&platform=${pp}&timestamp=${times}&signature=${sign}&`,
