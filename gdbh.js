@@ -7,7 +7,7 @@
 注册填写邀请码：1H9N65
 
 js：
-
+https://raw.githubusercontent.com/wx13069/JD/master/gdbh.js
 
 重写
 https://proxy.guodongbaohe.com/income/mymoney
