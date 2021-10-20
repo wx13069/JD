@@ -43,7 +43,7 @@ a = str(a)
 sign = 'member_id='+userid+'&platform='+platform+'&timestamp='+a+'&faf78c39388faeaa49c305804bbc1119'
 sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
 ##获取余额
-yy = requests.get
+
 
 r = requests.get(url='https://proxy.guodongbaohe.com/coins/checkin?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
 
