@@ -60,7 +60,7 @@ while i <= 6:
     sign = 'member_id=' + userid + '&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
     sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
     print(sign)
-    r = requests.get(url='https://proxy.guodongbaohe.com/coins/award?member_id='+userid+'&platform='+platform+'&timestamp='+a+'&signature='+sign+'&',headers=data)
+    r = requests.get(url='https://proxy.guodongbaohe.com/coins/award?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
 
     print(r.text,flush=True)
     print('执行第%d次广告任务' % i, flush=True)
