@@ -34,7 +34,7 @@ if "appid" in os.environ and os.environ["appid"]:
     appid = os.environ["appid"]
 
 data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":appid,"x-devid":"No-dev","x-nettype":"WIFI","x-agent":UA,"x-platform":platform,"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
-
+print(data)
 ##时间戳
 timestamp = int(time.time())
 a = timestamp
