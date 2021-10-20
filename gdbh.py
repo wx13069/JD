@@ -10,7 +10,7 @@
 # export platform=''
 # export gdbhtoken=''
 # export UA=''
-#
+#脚本地址https://raw.githubusercontent.com/wx13069/JD/master/gdbh.py
 # #以上需要添加的变量都可以在header里面找到，添加完之后，添加任务每天运行一次就行
 #
 
