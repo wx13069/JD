@@ -9,9 +9,10 @@
 # 青龙使用方法，小黄鸟抓包搜索关键字coins
 # 找到以下相关参数添加环境变量
 # export userid=''
-# export platform=''
+# export devid=''
 # export gdbhtoken=''
 # export UA=''
+# export appid=''
 #脚本地址https://raw.githubusercontent.com/wx13069/JD/master/gdbh.py
 # #以上需要添加的变量都可以在header里面找到，添加完之后，添加任务每天运行一次就行
 #
@@ -26,14 +27,14 @@ if "gdbhtoken" in os.environ and os.environ["gdbhtoken"]:
     gdbhtoken = os.environ["gdbhtoken"]
 if "userid" in os.environ and os.environ["userid"]:
     userid = os.environ["userid"]
-if "platform" in os.environ and os.environ["platform"]:
-    platform = os.environ["platform"]
+if "devid" in os.environ and os.environ["devid"]:
+    devid = os.environ["devid"]
 if "UA" in os.environ and os.environ["UA"]:
     UA = os.environ["UA"]
 if "appid" in os.environ and os.environ["appid"]:
     appid = os.environ["appid"]
 
-data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":appid,"x-devid":"No-dev","x-nettype":"WIFI","x-agent":UA,"x-platform":platform,"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
+data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":appid,"x-devid":devid,"x-nettype":"WIFI","x-agent":UA,"x-platform":'android',"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
 print(data)
 ##时间戳
 timestamp = int(time.time())
