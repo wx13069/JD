@@ -30,17 +30,20 @@ if "platform" in os.environ and os.environ["platform"]:
     platform = os.environ["platform"]
 if "UA" in os.environ and os.environ["UA"]:
     UA = os.environ["UA"]
+if "appid" in os.environ and os.environ["appid"]:
+    appid = os.environ["appid"]
 
-data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":"2102202714","x-devid":"No-dev","x-nettype":"WIFI","x-agent":UA,"x-platform":platform,"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
+data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":appid,"x-devid":"No-dev","x-nettype":"WIFI","x-agent":UA,"x-platform":platform,"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
 
-print(data)
+##时间戳
 timestamp = int(time.time())
 a = timestamp
 a = str(a)
 ##获取sign
 sign = 'member_id='+userid+'&platform='+platform+'&timestamp='+a+'&faf78c39388faeaa49c305804bbc1119'
 sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
-print(sign)
+##获取余额
+yy = requests.get
 
 r = requests.get(url='https://proxy.guodongbaohe.com/coins/checkin?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
 
