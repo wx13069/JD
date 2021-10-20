@@ -6,7 +6,7 @@
 # 下载链接：http://sd.bhrax.com/inviter/i4557E?userid=5803127
 # 邀请码：1H9N65 感谢支持
 # 感谢TOM大佬的sign算法支持，新人第一次写毛，水平有限，日志输出还没优化，有时间在去优化一下，脚本有不足的地方望大佬指导
-# 使用方法，小黄鸟抓包搜索关键字coins
+# 青龙使用方法，小黄鸟抓包搜索关键字coins
 # 找到以下相关参数添加环境变量
 # export userid=''
 # export platform=''
