@@ -34,8 +34,9 @@ if "UA" in os.environ and os.environ["UA"]:
 if "appid" in os.environ and os.environ["appid"]:
     appid = os.environ["appid"]
 
-data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":appid,"x-devid":devid,"x-nettype":"WIFI","x-agent":UA,"x-platform":'android',"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
+data = {"Host":"proxy.guodongbaohe.com","x-userid":userid,"x-appid":appid,"x-devid":devid,"x-nettype":"WIFI","x-agent":'JellyBox/3.8.4 (Android, Redmi K20 Pro, 11)',"x-platform":'android',"x-devtype":"no","x-token":gdbhtoken,"accept-encoding":"gzip","user-agent":"okhttp/3.14.9"}
 print(data)
+
 ##时间戳
 timestamp = int(time.time())
 a = timestamp
@@ -43,27 +44,74 @@ a = str(a)
 ##获取sign
 sign = 'member_id='+userid+'&platform=android&timestamp='+a+'&faf78c39388faeaa49c305804bbc1119'
 sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
-##获取余额
+##资产
+# r = requests.get(url='https://proxy.guodongbaohe.com/income/mymoney?member_id=5803127&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+# zc = r.json()
+# print(zc)
+# mx = zc.get('result')
+# print('累计收入',mx.get('month'), flush=True)
+# print('今日预估收入',mx.get('today'), flush=True)
+# print('本月预估收入',mx.get('total'), flush=True)
 
 
+
+#签到
 r = requests.get(url='https://proxy.guodongbaohe.com/coins/checkin?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+dic = r.json()
+print('【果冻宝盒】任务中心')
+if dic.get('status')==0:
 
-print(r.text,flush=True)
+    print('尊贵的叼毛用户恭喜签到成功，获得'+dic.get('result')+'金币', flush=True)
+else:
+
+    print(dic.get('result'), flush=True)
+
 time.sleep(2)
+##视频任务
 
-i = 1
-while i <= 6:
-    timestamp = int(time.time())
-    a = timestamp
-    a = str(a)
+timestamp = int(time.time())##获取时间戳
+a = timestamp
+a = str(a)
+
+##获取sign
+sign = 'member_id='+userid+'&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
+sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
+
+r = requests.get(
+    url='https://proxy.guodongbaohe.com/coins/award?member_id='+userid+'&platform=android&timestamp=' + a + '&signature=' + sign + '&',
+    headers=data)
+dic = r.json()
+if dic.get('status')!=0:
+    print(dic.get('result'))
+else:
+    b = 1
+    i = 1
+    while i <= 6:
+        timestamp = int(time.time())
+        a = timestamp
+        a = str(a)
     ##获取sign
-    sign = 'member_id=' + userid + '&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
-    sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
-    print(sign)
-    r = requests.get(url='https://proxy.guodongbaohe.com/coins/award?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+        sign = 'member_id='+userid+'&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
+        sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
+        print(sign)
+        r = requests.get(url='https://proxy.guodongbaohe.com/coins/award?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+        dic = r.json()
+        print('看视频成功获得'+dic.get('result')+'金币',flush=True)
+        if dic.get('status')==0:
+            print('执行第%d次广告任务' % b, flush=True)
+            print('执行第%d次广告任务' % b, flush=True)
+            print('每个视频30秒，等待93秒', flush=True)
+            time.sleep(93)
+            b = b+1
+    else:
+        i = i+1
+        print(dic.get('result'))
 
-    print(r.text,flush=True)
-    print('执行第%d次广告任务' % i, flush=True)
-    print('每个视频30秒，等待93秒',flush=True)
-    time.sleep(93)
-    i = i+1
+r = requests.get(url='https://proxy.guodongbaohe.com/income/mymoney?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+zc = r.json()
+
+mx = zc.get('result')
+print('累计收入',mx.get('month'), flush=True)
+print('今日预估收入',mx.get('today'), flush=True)
+print('本月预估收入',mx.get('total'), flush=True)
+
