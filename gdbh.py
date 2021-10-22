@@ -103,9 +103,50 @@ else:
             print('每个视频30秒，等待93秒', flush=True)
             time.sleep(93)
             b = b+1
+            i = i+1
     else:
-        i = i+1
+        
         print(dic.get('result'))
+
+##提现
+timestamp = int(time.time())
+a = timestamp
+a = str(a)
+sign = 'member_id='+userid+'&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
+sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
+
+r = requests.get(url='https://proxy.guodongbaohe.com/coins/info?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+info = r.json()
+info = info.get('result')
+day = info.get('checkin')
+day = day.get('total_day')
+credits = info.get('credits')
+print('已连续签到第'+day+'天',flush=True)
+print('可提现'+credits+'金币')
+print('需手动进app提现一下')
+#timestamp = int(time.time())
+#a = timestamp
+#a = str(a)
+#sign = 'member_id='+userid+'&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
+#sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
+#
+#r = requests.get(url='https://proxy.guodongbaohe.com/coins/exchange_info?credits='+credits+'&member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+#a = int(a)+3
+#a = str(a)
+#sign = 'member_id='+userid+'&platform=android&timestamp=' + a + '&faf78c39388faeaa49c305804bbc1119'
+#sign = hashlib.md5(sign.encode(encoding='UTF-8')).hexdigest()
+#r = requests.get(url='https://proxy.guodongbaohe.com/coins/exchange?credits='+credits+'&member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
+#
+#r = r.json()
+#r1 = r.get('status')
+#if r==0:
+#    print(''+credits+'金币提现成功',flush=True)
+#else:
+#    print(r,flush=True)
+
+
+##收益统计
+
 
 r = requests.get(url='https://proxy.guodongbaohe.com/income/mymoney?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
 zc = r.json()
