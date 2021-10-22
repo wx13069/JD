@@ -96,6 +96,7 @@ else:
         print(sign)
         r = requests.get(url='https://proxy.guodongbaohe.com/coins/award?member_id='+userid+'&platform=android&timestamp='+a+'&signature='+sign+'&',headers=data)
         dic = r.json()
+        print(dic)
         print('看视频成功获得'+dic.get('result')+'金币',flush=True)
         if dic.get('status')==0:
             print('执行第%d次广告任务' % b, flush=True)
@@ -103,7 +104,7 @@ else:
             print('每个视频30秒，等待93秒', flush=True)
             time.sleep(93)
             b = b+1
-            i = i+1
+        i = i+1
     else:
         
         print(dic.get('result'))
